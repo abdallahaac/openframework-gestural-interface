@@ -1,32 +1,5 @@
-# Prerequisites
-*.d
-
-# Compiled Object files
-*.slo
-*.lo
-*.o
-*.obj
-
-# Precompiled Headers
-*.gch
-*.pch
-
-# Compiled Dynamic libraries
-*.so
-*.dylib
-*.dll
-
-# Fortran module files
-*.mod
-*.smod
-
-# Compiled Static libraries
-*.lai
-*.la
-*.a
-*.lib
-
-# Executables
-*.exe
-*.out
-*.app
+/assignement-03/assignement-03.xcodeproj
+/assignement-03/config.make
+/assignement-03/openFrameworks-Info.plist
+/assignement-03/Project.xcconfig
+/assignement-03/bin/assignement-03Debug
