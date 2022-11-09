@@ -1,6 +1,9 @@
 #pragma once
 
 #include "ofMain.h"
+#include "App_Constants.h"
+#include "ofxImGui.h"
+#include "ofxOpenCv.h"
 
 class ofApp : public ofBaseApp{
 
@@ -11,14 +14,18 @@ class ofApp : public ofBaseApp{
 
 		void keyPressed(int key);
 		void keyReleased(int key);
-		void mouseMoved(int x, int y );
 		void mouseDragged(int x, int y, int button);
 		void mousePressed(int x, int y, int button);
-		void mouseReleased(int x, int y, int button);
-		void mouseEntered(int x, int y);
-		void mouseExited(int x, int y);
-		void windowResized(int w, int h);
 		void dragEvent(ofDragInfo dragInfo);
-		void gotMessage(ofMessage msg);
+    
+    
+        
+        ofxImGui::Gui                       m_gui;  //gui
+        
+        App_Constants::APP_MODE             m_appMode; // different app modes .i.e. Background subtraction, colour tracking + any additional filters
+    
+        
+    
+
 		
 };
