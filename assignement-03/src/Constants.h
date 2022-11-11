@@ -21,6 +21,7 @@ enum APP_MODE {
     FIND_DIFFERENCE,
     FIND_COLOR,
     
+    
 };
 
 enum VIDEO_INPUT {

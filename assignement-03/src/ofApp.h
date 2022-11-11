@@ -17,16 +17,21 @@ public:
     void draw();
     void mousePressed(int x, int y, int button);
 
+    
+    
     void storeTrackedObjectCenters();
     
+    // display functions
     void displayVideoOptionsInGui();
     void displayVideoTrackingOptions();
-    
     void displayLiveVideoTrackingOptions();
+    void displayBufferingOptions();
     
-    void processVideoSegmentation();
+    // processing functions
+    void processVideoSegmentation(); // segmentation
     void processVideoColour();
     
+    void processBuffering();
     void processLiveColour();
     void processLiveSegmentation();
     
@@ -52,6 +57,7 @@ public:
     Constants::APP_MODE                   m_appMode;
     std::vector<std::string>              m_appModes;
     Constants::VIDEO_INPUT                m_video_input;
+    
     
     
     

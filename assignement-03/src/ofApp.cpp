@@ -204,152 +204,100 @@ void ofApp::draw(){
         }else if (m_appMode == Constants::APP_MODE::FIND_DIFFERENCE)
         {
             
-            
-            
-            
-            
             ofTranslate(10, 10);
             ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofScale(0.5);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()+15,m_colourImage.getHeight()+15);
+                ofFill();
+                ofSetColor(0);
+                ofScale(0.5);
+                ofDrawRectangle(0,0,m_colourImage.getWidth()+15,m_colourImage.getHeight()+15);
             ofPopMatrix();
             ofPushMatrix();
-            ofScale(0.5f);
-            ofSetColor(255);
-            m_colourImage.draw(5,5);
+                ofScale(0.5f);
+                ofSetColor(255);
+                m_colourImage.draw(5,5);
             ofPopMatrix();
             
             
             // vid 2
             ofPushMatrix();
-            
-            // 10 : buffer
-            
-            ofTranslate(m_colourImage.getWidth()/2+20, 0);
-            
-            // video border
-            ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()/2+10,m_colourImage.getHeight()/2+10);
+                ofTranslate(m_colourImage.getWidth()/2+20, 0);
+                // video border
+                ofPushMatrix();
+                    ofFill();
+                    ofSetColor(0);
+                    ofDrawRectangle(0,0,m_colourImage.getWidth()/2+10,m_colourImage.getHeight()/2+10);
+                ofPopMatrix();
+                ofSetColor(255);
+                // drawing colour tracker camera
+                ofPushMatrix();
+                    ofTranslate(5, 5);
+                    m_graydiffImage.draw(0,0);
+                ofPopMatrix();
             ofPopMatrix();
             
-            
-            ofSetColor(255);
-            // drawing colour tracker camera
-            ofPushMatrix();
-            
-            ofTranslate(5, 5);
-            
-            m_graydiffImage.draw(0,0);
-            
-            
-            ofPopMatrix();
-            
-            ofPopMatrix();
-            
-            
-            //vid 3
+        //vid 3
             
             ofPushMatrix();
-            
-            // 10 : buffer
-            
-            ofTranslate(0, m_colourImage.getHeight()/2 +20);
-            
-            // video border
+                ofTranslate(0, m_colourImage.getHeight()/2 +20);
+                // video border
+                ofPushMatrix();
+                    ofFill();
+                    ofSetColor(0);
+                    ofDrawRectangle(0,0,m_colourImage.getWidth()/2+10,m_colourImage.getHeight()/2+10);
+                ofPopMatrix();
+                ofSetColor(255);
+                // drawing colour tracker camera
+                ofPushMatrix();
+                    ofTranslate(5, 5);
+                    m_grayMask.draw(0,0);
+                    m_contourFinder.draw( 0,0 );
+                ofPopMatrix();
+            ofPopMatrix();
+    //vid 4
+
             ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()/2+10,m_colourImage.getHeight()/2+10);
+                // 10 : buffer
+                ofTranslate(m_colourImage.getWidth()/2+20, m_colourImage.getHeight()/2 +20);
+                // video border
+                ofPushMatrix();
+                    ofFill();
+                    ofSetColor(0);
+                    ofDrawRectangle(0,0,m_colourImage.getWidth()/2+10,m_colourImage.getHeight()/2+10);
+                ofPopMatrix();
+                ofSetColor(255);
+                // drawing colour tracker camera
+                ofPushMatrix();
+                    ofTranslate(5, 5);
+                    ofScale(0.5);
+                    m_colourImage.draw(0,0);
+                ofPopMatrix();
             ofPopMatrix();
-            
-            
-            ofSetColor(255);
-            // drawing colour tracker camera
-            
-            ofPushMatrix();
-            
-            ofTranslate(5, 5);
-            
-            m_grayMask.draw(0,0);
-            m_contourFinder.draw( 0,0 );
-            
-            ofPopMatrix();
-            
-            ofPopMatrix();
-            
-            //vid 4
-            
-            ofPushMatrix();
-            
-            // 10 : buffer
-            
-            ofTranslate(m_colourImage.getWidth()/2+20, m_colourImage.getHeight()/2 +20);
-            
-            // video border
-            ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            
-            ofDrawRectangle(0,0,m_colourImage.getWidth()/2+10,m_colourImage.getHeight()/2+10);
-            ofPopMatrix();
-            
-            
-            ofSetColor(255);
-            // drawing colour tracker camera
-            ofPushMatrix();
-            
-            ofTranslate(5, 5);
-            ofScale(0.5);
-            m_colourImage.draw(0,0);
-            
-            
-            ofPopMatrix();
-            
-            ofPopMatrix();
-            
-            
             
             // drawing live camera with border
-            
-            
+
             ofSetLineWidth( 2 );
-            
             ofPushMatrix();
-            
-            
-            ofSetColor( 255);    //Set color for images drawing
-            ofTranslate(100,80);
-            ofScale(0.5);
-            
-            
-            for (int i=0; i < m_trackingObject.size(); i++) {
-                ofPoint p = m_trackingObject[i] + ofPoint( m_colourImage.width +10,  m_colourImage.height +10 );
-                // draw cross on at the center of the blob
-                ofPushMatrix();
-                ofLine( p.x - 20, p.y, p.x + 20, p.y );
-                ofLine( p.x, p.y - 20, p.x, p.y + 20 );
-                ofPopMatrix();
+                ofSetColor( 255);    //Set color for images drawing
+                ofTranslate(100,80);
+                ofScale(0.5);
+                for (int i=0; i < m_trackingObject.size(); i++) {
+                    ofPoint p = m_trackingObject[i] + ofPoint( m_colourImage.width +10,  m_colourImage.height +10 );
+                    // draw cross on at the center of the blob
+                    ofPushMatrix();
+                    ofLine( p.x - 20, p.y, p.x + 20, p.y );
+                    ofLine( p.x, p.y - 20, p.x, p.y + 20 );
+            ofPopMatrix();
             }
             
             ofSetLineWidth( 1 );
             ofPopMatrix();
             
-            
             m_gui.begin();
             {
-                
-                
                 //backgroundColor is stored as an ImVec4 type but can handle ofColor
                 ImGui::SliderFloat("Threshold",&m_threshold,0,100);
-                
-                
                 displayVideoOptionsInGui();
                 displayLiveVideoTrackingOptions();
-                
             }
             
             m_gui.end();
@@ -363,59 +311,47 @@ void ofApp::draw(){
             
             ofTranslate(10, 10);
             ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                ofFill();
+                ofSetColor(0);
+                ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
             ofPopMatrix();
             ofSetColor(255);
             m_colourImage.draw(5,5);
             
-            
             // drawing live camera with border
             
             ofPushMatrix();
-            
-            
-            // 10 : buffer
-            
-            
-            ofTranslate(m_colourImage.getWidth()+20, 0);
-            
-            
-            // video border
-            ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                    ofTranslate(m_colourImage.getWidth()+20, 0);
+                    // video border
+                    ofPushMatrix();
+                    ofFill();
+                    ofSetColor(0);
+                    ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                ofPopMatrix();
+                
+                // scaling the camera
+                ofSetColor(255);
+                // drawing colour tracker camera
+                ofPushMatrix();
+                    ofTranslate(5, 5);
+                    m_colourImage.draw(0,0);
+                    m_cv_contourFinder.draw();
+                ofPopMatrix();
             ofPopMatrix();
             
-            // scaling the camera
-            ofSetColor(255);
-            // drawing colour tracker camera
-            ofPushMatrix();
-            ofTranslate(5, 5);
-            m_colourImage.draw(0,0);
-            m_cv_contourFinder.draw();
-            ofPopMatrix();
-            
-            ofPopMatrix();
-            
-            
-            // relocate gui position
-            ofPushMatrix();
             
             // drawing gui to screen
             m_gui.draw();
-            ofPopMatrix();
+            
             
             // postion of eyedropper
             ofPushMatrix();
-            ofTranslate(Constants::VIDEO_WIDTH + 5 * 8.0f, -Constants::VIDEO_BORDER_SIZE  );
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(Constants::VIDEO_BORDER_SIZE,Constants::VIDEO_BORDER_SIZE,0,Constants::VIDEO_BORDER_BOX_WIDTH,Constants::VIDEO_BORDER_BOX_HEIGHT);
-            ofSetColor(m_targetColor);
-            ofDrawRectangle(Constants::VIDEO_BORDER_SIZE + 5,Constants::VIDEO_BORDER_SIZE + 5 ,0, Constants::VIDEO_BORDER_BOX_WIDTH-Constants::VIDEO_BORDER_SIZE, Constants::VIDEO_BORDER_BOX_HEIGHT-Constants::VIDEO_BORDER_SIZE);
+                ofTranslate(Constants::VIDEO_WIDTH + 5 * 8.0f, -Constants::VIDEO_BORDER_SIZE  );
+                ofFill();
+                ofSetColor(0);
+                ofDrawRectangle(Constants::VIDEO_BORDER_SIZE,Constants::VIDEO_BORDER_SIZE,0,Constants::VIDEO_BORDER_BOX_WIDTH,Constants::VIDEO_BORDER_BOX_HEIGHT);
+                ofSetColor(m_targetColor);
+                ofDrawRectangle(Constants::VIDEO_BORDER_SIZE + 5,Constants::VIDEO_BORDER_SIZE + 5 ,0, Constants::VIDEO_BORDER_BOX_WIDTH-Constants::VIDEO_BORDER_SIZE, Constants::VIDEO_BORDER_BOX_HEIGHT-Constants::VIDEO_BORDER_SIZE);
             ofPopMatrix();
             
             m_gui.begin();
@@ -431,38 +367,30 @@ void ofApp::draw(){
             
             ofTranslate(10, 10);
             ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                ofFill();
+                ofSetColor(0);
+                ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
             ofPopMatrix();
             ofSetColor(255);
             m_colourImage.draw(5,5);
             
-            
-            // vid 2
+        // vid 2
             ofPushMatrix();
-            
-            // 10 : buffer
-            
-            ofTranslate(m_colourImage.getWidth()+20, 0);
-            
-            // video border
-            ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
-            ofPopMatrix();
-            
-            
-            ofSetColor(255);
-            // drawing colour tracker camera
-            ofPushMatrix();
-            
-            ofTranslate(5, 5);
-            m_graydiffImage.draw(0,0);
-            
-            
-            ofPopMatrix();
+   
+                ofTranslate(m_colourImage.getWidth()+20, 0);
+                
+                // video border
+                ofPushMatrix();
+                    ofFill();
+                    ofSetColor(0);
+                    ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                ofPopMatrix();
+                ofSetColor(255);
+                // drawing colour tracker camera
+                ofPushMatrix();
+                    ofTranslate(5, 5);
+                    m_graydiffImage.draw(0,0);
+                ofPopMatrix();
             
             ofPopMatrix();
             
@@ -470,84 +398,61 @@ void ofApp::draw(){
             //vid 3
             
             ofPushMatrix();
-            
-            // 10 : buffer
-            
-            ofTranslate(0, m_colourImage.getHeight() +20);
-            
-            // video border
-            ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
-            ofPopMatrix();
-            
-            
-            ofSetColor(255);
-            // drawing colour tracker camera
-            
-            ofPushMatrix();
-            
-            ofTranslate(5, 5);
-            m_grayMask.draw(0,0);
-            m_contourFinder.draw( 0,0 );
-            
-            ofPopMatrix();
-            
+                ofTranslate(0, m_colourImage.getHeight() +20);
+                // video border
+                ofPushMatrix();
+                    ofFill();
+                    ofSetColor(0);
+                    ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                ofPopMatrix();
+                ofSetColor(255);
+                // drawing colour tracker camera
+                ofPushMatrix();
+                    ofTranslate(5, 5);
+                    m_grayMask.draw(0,0);
+                    m_contourFinder.draw( 0,0 );
+                ofPopMatrix();
             ofPopMatrix();
             
             //vid 4
             
             ofPushMatrix();
-            
-            // 10 : buffer
-            
-            ofTranslate(m_colourImage.getWidth()+20, m_colourImage.getHeight() +20);
-            
-            // video border
-            ofPushMatrix();
-            ofFill();
-            ofSetColor(0);
-            ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                ofTranslate(m_colourImage.getWidth()+20, m_colourImage.getHeight() +20);
+                // video border
+                ofPushMatrix();
+                    ofFill();
+                    ofSetColor(0);
+                    ofDrawRectangle(0,0,m_colourImage.getWidth()+10,m_colourImage.getHeight()+10);
+                ofPopMatrix();
+                ofSetColor(255);
+                // drawing colour tracker camera
+                ofPushMatrix();
+                    ofTranslate(5, 5);
+                    m_colourImage.draw(0,0);
+                ofPopMatrix();
             ofPopMatrix();
-            
-            
-            ofSetColor(255);
-            // drawing colour tracker camera
-            ofPushMatrix();
-            
-            ofTranslate(5, 5);
-            m_colourImage.draw(0,0);
-            ofPopMatrix();
-            ofPopMatrix();
-            
             
             // drawing live camera with border
-            
-            
             ofSetLineWidth( 2 );
             
             ofPushMatrix();
-            int w = m_colourImage.width ;
-            int h = m_colourImage.height ;
-            ofSetColor( 255);    //Set color for images drawing
-            
-            for (int i=0; i < m_trackingObject.size(); i++) {
-                ofPoint p = m_trackingObject[i] + ofPoint( m_colourImage.width+10,  m_colourImage.height +10 );
-                // draw cross on at the center of the blob
-                ofLine( p.x - 20, p.y, p.x + 20, p.y );
-                ofLine( p.x, p.y - 20, p.x, p.y + 20 );
-            }
-            
-            ofSetLineWidth( 1 );
+                int w = m_colourImage.width ;
+                int h = m_colourImage.height ;
+                ofSetColor( 255);    //Set color for images drawing
+                
+                for (int i=0; i < m_trackingObject.size(); i++) {
+                    ofPoint p = m_trackingObject[i] + ofPoint( m_colourImage.width+10,  m_colourImage.height +10 );
+                    // draw cross on at the center of the blob
+                    ofLine( p.x - 20, p.y, p.x + 20, p.y );
+                    ofLine( p.x, p.y - 20, p.x, p.y + 20 );
+                }
+                
+                ofSetLineWidth( 1 );
             ofPopMatrix();
             
-            
-            
-            
+
             m_gui.begin();
             {
-                
                 
                 //backgroundColor is stored as an ImVec4 type but can handle ofColor
                 ImGui::SliderFloat("Threshold",&m_threshold,0,100);
@@ -758,10 +663,6 @@ void ofApp::displayVideoOptionsInGui(){
         if(ImGui::Button("TUPPERWARE")){
             m_video_input = Constants::VIDEO_INPUT::VIDEO_ONE;
             
-        }
-        if(ImGui::Button("FRUITS")){
-            
-            m_video_input = Constants::VIDEO_INPUT::VIDEO_TWO;
         }
         
     }
