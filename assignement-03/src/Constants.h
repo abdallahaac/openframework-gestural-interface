@@ -7,7 +7,6 @@ static const int APP_WINDOW_WIDTH        = 1280;
 static const int APP_WINDOW_HEIGHT        = 720;
 static const int APP_DESIRED_FRAMERATE    = 60;
 
-static const std::string VIDEO_PATH_GRAYSCALE    = "fingers.mov";
 static const std::string VIDEO_PATH_COLOR_ONE    = "tupperware.mov";
 static const int VIDEO_WIDTH    = 640;    //both videos are very low resolution (change this if you use a diff video)
 static const int VIDEO_HEIGHT    = 480;

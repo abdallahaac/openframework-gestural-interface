@@ -16,11 +16,13 @@ public:
     void update();
     void draw();
     void mousePressed(int x, int y, int button);
-    void keyPressed(int key);
-    
+
+    void storeTrackedObjectCenters();
     
     void displayVideoOptionsInGui();
     void displayVideoTrackingOptions();
+    
+    void displayLiveVideoTrackingOptions();
     
     void processVideoSegmentation();
     void processVideoColour();
