@@ -4,8 +4,6 @@
 #include "ofxOpenCv.h"
 #include "ofxCv.h"
 #include "ofxImGui.h"
-#include "ofLive.h"
-#include "ofxGui.h"
 #include "Constants.h"
 
 
@@ -36,14 +34,14 @@ public:
     void processLiveSegmentation();
     
     
-    bool                                isLive,isVideoOnePlaying,isVideoTwoPlaying;
+    bool                                isLive,isVideoOnePlaying;
     
     
     
     
     // live camera variables
     
-    ofVideoGrabber                        m_cam , m_cam_2;
+    ofVideoGrabber                        m_cam  ;
      ofVideoPlayer                         m_videoPlayer;
     
     ofxCv::ContourFinder                  m_cv_contourFinder, m_cv_live_contourFinder;
